@@ -7,7 +7,7 @@ class CreatePrompts < ActiveRecord::Migration[5.2]
       t.string :genre
       t.integer :timed
       t.integer :word_count
-      t.belongs_to :prompt, foreign_key: true
+      t.belongs_to :piece, foreign_key: true
 
       t.timestamps
     end

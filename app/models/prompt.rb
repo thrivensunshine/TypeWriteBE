@@ -1,3 +1,4 @@
 class Prompt < ApplicationRecord
-  belongs_to :prompt
+  belongs_to :piece
+  has_many :characters
 end
