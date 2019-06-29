@@ -46,6 +46,6 @@ class PiecesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def piece_params
-      params.require(:piece).permit(:body, :note, :likes, :bookmarked, :user_id)
+      params.require(:piece).permit(:body, :note, :likes, :bookmarked, :timed, :word_count, :user_id)
     end
 end

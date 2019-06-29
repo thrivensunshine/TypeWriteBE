@@ -1,13 +1,15 @@
 class CreatePrompts < ActiveRecord::Migration[5.2]
   def change
     create_table :prompts do |t|
-      t.string :emotion
+      t.string :character
+      t.string :phrase
       t.string :setting
-      t.string :event
       t.string :genre
-      t.integer :timed
-      t.integer :word_count
-      t.belongs_to :piece, foreign_key: true
+      t.string :emotion
+      t.string :topic
+      t.string :incase
+      t.boolean :timed
+      t.integer :wordcount
 
       t.timestamps
     end

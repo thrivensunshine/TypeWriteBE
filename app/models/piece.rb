@@ -1,4 +1,5 @@
 class Piece < ApplicationRecord
   belongs_to :user
-  has_many :characters
+  has_many :comments
+  has_many :prompts
 end

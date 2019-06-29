@@ -1,7 +1,5 @@
 class CommentSerializer < ActiveModel::Serializer
-  belongs_to :user
-  belongs_to :piece
-
-
   attributes :id, :body, :liked
+  has_one :user
+  has_one :piece
 end

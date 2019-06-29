@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_27_155429) do
+ActiveRecord::Schema.define(version: 2019_06_29_133731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,9 +18,8 @@ ActiveRecord::Schema.define(version: 2019_06_27_155429) do
   create_table "characters", force: :cascade do |t|
     t.string "name"
     t.integer "age"
-    t.text "bio"
-    t.string "quirk"
-    t.string "mood"
+    t.string "sex"
+    t.string "mind"
     t.bigint "prompt_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -52,23 +51,35 @@ ActiveRecord::Schema.define(version: 2019_06_27_155429) do
     t.text "note"
     t.integer "likes"
     t.boolean "bookmarked"
+    t.boolean "timed"
+    t.integer "word_count"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "character"
+    t.string "phrase"
+    t.string "setting"
+    t.string "genre"
+    t.string "emotion"
+    t.string "topic"
+    t.string "incase"
+    t.integer "group_id"
+    t.boolean "private"
     t.index ["user_id"], name: "index_pieces_on_user_id"
   end
 
   create_table "prompts", force: :cascade do |t|
-    t.string "emotion"
+    t.string "character"
+    t.string "phrase"
     t.string "setting"
-    t.string "event"
     t.string "genre"
-    t.integer "timed"
-    t.integer "word_count"
-    t.bigint "piece_id"
+    t.string "emotion"
+    t.string "topic"
+    t.string "incase"
+    t.boolean "timed"
+    t.integer "wordcount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["piece_id"], name: "index_prompts_on_piece_id"
   end
 
   create_table "user_groups", force: :cascade do |t|
@@ -82,10 +93,11 @@ ActiveRecord::Schema.define(version: 2019_06_27_155429) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "user_name"
+    t.string "username"
     t.string "password"
-    t.string "avatar"
+    t.string "password_digest"
     t.text "bio"
+    t.string "avatar"
     t.text "thoughts"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -95,7 +107,6 @@ ActiveRecord::Schema.define(version: 2019_06_27_155429) do
   add_foreign_key "comments", "pieces"
   add_foreign_key "comments", "users"
   add_foreign_key "pieces", "users"
-  add_foreign_key "prompts", "pieces"
   add_foreign_key "user_groups", "groups"
   add_foreign_key "user_groups", "users"
 end

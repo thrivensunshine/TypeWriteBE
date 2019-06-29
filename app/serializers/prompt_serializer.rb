@@ -1,7 +1,3 @@
 class PromptSerializer < ActiveModel::Serializer
-belongs_to :piece
-has_many :characters
-
-
-  attributes :id, :emotion, :setting, :event, :genre, :timed, :word_count
+  attributes :id, :character, :phrase, :setting, :genre, :emotion, :topic, :incase, :timed, :wordcount
 end

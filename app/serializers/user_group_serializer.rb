@@ -1,6 +1,5 @@
 class UserGroupSerializer < ActiveModel::Serializer
-belongs_to :user
-belongs_to :group
-
   attributes :id
+  has_one :user
+  has_one :group
 end

@@ -1,51 +1,51 @@
 class CommentsController < ApplicationController
-  before_action :set_piece, only: [:show, :update, :destroy]
+  before_action :set_comment, only: [:show, :update, :destroy]
 
-  # GET /pieces
+  # GET /comments
   def index
-    comments = Comment.all
+    @comments = Comment.all
 
-    render json: comments
+    render json: @comments
   end
 
-  # GET /pieces/1
+  # GET /comments/1
   def show
-    render json: comment
+    render json: @comment
   end
 
-  # POST /pieces
+  # POST /comments
   def create
-    comment = Comment.new(piece_params)
+    @comment = Comment.new(comment_params)
 
-    if comment.save
-      render json: comment, status: :created, location: comment
+    if @comment.save
+      render json: @comment, status: :created, location: @comment
     else
-      render json: comment.errors, status: :unprocessable_entity
+      render json: @comment.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /pieces/1
+  # PATCH/PUT /comments/1
   def update
-    if comment.update(piece_params)
-      render json: comment
+    if @comment.update(comment_params)
+      render json: @comment
     else
-      render json: comment.errors, status: :unprocessable_entity
+      render json: @comment.errors, status: :unprocessable_entity
     end
   end
 
-  # DELETE /pieces/1
+  # DELETE /comments/1
   def destroy
-    comment.destroy
+    @comment.destroy
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_piece
-      comment = Comment.find(params[:id])
+    def set_comment
+      @comment = Comment.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
-    def piece_params
-      params.require(:piece).permit( :name, :age, :bio, :quirk, :mood)
+    def comment_params
+      params.require(:comment).permit(:body, :liked, :user_id, :piece_id)
     end
 end

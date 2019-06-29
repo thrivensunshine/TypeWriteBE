@@ -1,5 +1,4 @@
 class CharacterSerializer < ActiveModel::Serializer
-belongs_to :prompt
-
-  attributes :id, :name, :age, :bio, :quirk, :mood
+  attributes :id, :name, :age, :sex, :mind
+  has_one :prompt
 end

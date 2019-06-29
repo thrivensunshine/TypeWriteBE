@@ -5,6 +5,8 @@ class CreatePieces < ActiveRecord::Migration[5.2]
       t.text :note
       t.integer :likes
       t.boolean :bookmarked
+      t.boolean :timed
+      t.integer :word_count
       t.belongs_to :user, foreign_key: true
 
       t.timestamps
