@@ -4,15 +4,30 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.all
-
     render json: @users
   end
 
   # GET /users/1
   def show
-    render json: @user
+    @user = User.find(params[:id])
+    render json:{user: UserSerializer.new(@user)}
   end
 
+  def login
+
+    @user= User.find_by(username: params[:username])
+     if @user && @user.authenticate(params[:password])
+       token = encode_token({user_id: @user.id})
+       render json: { user: UserSerializer.new(@user), jwt: token }, status: :accepted
+     else
+      render json: { error: "Try Again"}
+    end
+  end
+
+  def persist
+    token= encode_token({user_id: @user_id})
+    render json: { user: UserSerializer.new(@user), jwt: token}
+  end
   # POST /users
   def create
     @user = User.new(user_params)
@@ -46,6 +61,6 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:name, :username, :password, :password_digest, :bio, :avatar, :thoughts)
+      params.require(:user).permit(:name, :username, :password, :bio, :avatar, :thoughts)
     end
 end

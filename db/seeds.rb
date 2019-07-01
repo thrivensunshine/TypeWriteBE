@@ -14,7 +14,7 @@ Group.destroy_all
 UserGroup.destroy_all
 
 
-User.create!(name:"coolguy")
+User.create!(name:"coolguy", username:"doop", password:"poopy")
 
 Group.create!(name:"cool kids group", extra:"this is extra")
 
