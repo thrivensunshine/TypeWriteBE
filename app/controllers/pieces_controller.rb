@@ -12,11 +12,12 @@ class PiecesController < ApplicationController
   def show
     render json: @piece
   end
-
+  def new
+  end
   # POST /pieces
   def create
-    @piece = Piece.new(piece_params)
-
+    @piece = Piece.create(piece_params)
+    # byebug
     if @piece.save
       render json: @piece, status: :created, location: @piece
     else
@@ -46,6 +47,6 @@ class PiecesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def piece_params
-      params.require(:piece).permit(:body, :note, :likes, :bookmarked, :timed, :word_count, :user_id)
+      params.require(:piece).permit(:body, :note, :likes, :bookmarked, :timed, :word_count, :user_id, :character,:emotion, :genre, :phrase, :setting)
     end
 end
