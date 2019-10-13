@@ -14,7 +14,7 @@ Group.destroy_all
 UserGroup.destroy_all
 
 
-User.create!(name:"coolguy", username:"doop", password:"poopy", avatar:"https://d2isyty7gbnm74.cloudfront.net/unsafe/1292x1292/https://square-production.s3.amazonaws.com/files/598f2b1ca9c197f776baa521075bff96/original.png")
+User.create!(name:"Danielle", username:"doop", password:"poopy", avatar:"https://d2isyty7gbnm74.cloudfront.net/unsafe/1292x1292/https://square-production.s3.amazonaws.com/files/598f2b1ca9c197f776baa521075bff96/original.png")
 
 User.create!(name:"boodoo", username:"hella", password:"cool", avatar: "http://www.vitamin-ha.com/wp-content/uploads/2015/04/Drinking-Dogs-funny-cool-dog-drinking-beer66.jpg")
 
